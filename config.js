@@ -4,7 +4,7 @@
   const mode = params.has('edit') ? 'edit' : params.has('preview') ? 'preview' : 'view';
   const trial = false;
   const TRIAL_EDITABLE = ['invocation.religion', 'brideName', 'groomName'];
-  const STORAGE_KEY = 'royaleConfig_ShaziyabanuFahim_v4';
+  const STORAGE_KEY = 'royaleConfig_ShaziyabanuFahim_v5';
 
   const SYMBOLS = [
     { id: 'islamic', label: 'Bismillah & Crescent', src: 'symbols/_islamic.svg' },
