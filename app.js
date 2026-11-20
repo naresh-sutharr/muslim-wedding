@@ -29,8 +29,8 @@
   var FINAL_ANIMATIONS = ['ry-flap-bottom', 'ry-flap-right', 'ry-gate-fade'];
   // In case animationend never arrives - e.g. the tab was backgrounded
   // mid-sequence and the browser skipped the event. Comfortably after the
-  // flaps' own end (--flap-delay + --flap-dur, ~1.25s).
-  var FALLBACK_MS = 1600;
+  // flaps' own end (--flap-delay + --flap-dur, 2.85s).
+  var FALLBACK_MS = 4500;
 
   var finished = false;
 

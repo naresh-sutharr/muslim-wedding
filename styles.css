@@ -78,18 +78,18 @@
      and wants rebuilding if that file changes. */
   --motif-tile: calc(127.4 * var(--u)) calc(123 * var(--u));
 
-  /* Opening sequence, measured from the tap. Snappy and smooth. */
-  --card-dur: 600ms;
+  /* Opening sequence, measured from the tap. Royal, slow, and graceful. */
+  --card-dur: 1000ms;
   --card-ease: cubic-bezier(0.65, 0, 0.35, 1);
-  --door-delay: 400ms;
-  --door-dur: 800ms;
+  --door-delay: 750ms;
+  --door-dur: 1800ms;
   --door-ease: cubic-bezier(0.6, 0, 0.3, 1);
-  --flap-delay: 500ms;
-  --flap-dur: 750ms;
+  --flap-delay: 1550ms;
+  --flap-dur: 1300ms;
   --flap-ease: cubic-bezier(0.3, 0, 0.3, 1);
-  --names-delay: 700ms;
-  --names-stagger: 180ms;
-  --names-dur: 800ms;
+  --names-delay: 2000ms;
+  --names-stagger: 220ms;
+  --names-dur: 1300ms;
 }
 
 @supports (height: 1svh) {
