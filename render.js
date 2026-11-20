@@ -208,7 +208,14 @@
     const btnLabel = btn && btn.querySelector('.ry-plaque__label');
     if (btnLabel) btnLabel.textContent = cfg.revealButton || 'Reveal the Date';
     const after = $('ryRevealAfter');
-    if (after) after.textContent = cfg.revealAfter || 'Save the Date';
+    if (after) {
+      const tagline = after.querySelector('.royale-countdown__tagline');
+      if (tagline) {
+        tagline.textContent = cfg.revealAfter || 'Save the Date';
+      } else if (!after.querySelector('.royale-countdown')) {
+        after.textContent = cfg.revealAfter || 'Save the Date';
+      }
+    }
 
     // The picker stands under the plaques rather than behind a button: a host
     // should see that the date is theirs to set without having to find the

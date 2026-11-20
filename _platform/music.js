@@ -26,7 +26,7 @@ window.BalconyMusic = (function () {
   // URL-encoded (the filename has a space) - encodeURI would be run on this
   // every use otherwise, and a literal space in a src attribute is asking
   // for a browser/environment to disagree on how to resolve it.
-  var DEFAULT_TRACK = 'music/Jashn-e-bahara Instrumental.mp3';
+  var DEFAULT_TRACK = 'music/Khwaja Mere Khwaja.mp3';
 
   var ICON_ON =
     '<svg class="music-toggle__icon music-toggle__icon--on" viewBox="0 0 24 24" aria-hidden="true">' +
@@ -94,7 +94,7 @@ window.BalconyMusic = (function () {
     // doesn't autoplay in the dashboard workspace; the visitor unmutes with
     // this toggle.
     var startMuted = false;
-    try { startMuted = new URLSearchParams(window.location.search).get('muted') === '1'; } catch (e) {}
+    try { startMuted = new URLSearchParams(window.location.search).get('muted') === '1'; } catch (e) { }
     var wantsSound = !startMuted;
 
     function reflect() {

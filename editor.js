@@ -351,12 +351,20 @@
   // guessed at - and so is every ceremony the host added themselves, even one
   // they happened to call "Haldi": its date is the one they typed.
   const VIVAAH_OFFSETS = {
+    'haldi': -1,
+    'haldi ceremony': -1,
+    'nikah': 0,
+    'dawat-e-nikah': 0,
+    'rukhsati': 1,
+    'rukhsati (vidai)': 1,
+    'vidai': 1,
+    'walima': 1,
     'ring ceremony': -2,
     'mehendi': -1,
-    'haldi': -1,
     'sangeet': -1,
     'vivaah': 0,
-    'reception': 1,
+    'wedding day': 0,
+    'reception': 0,
   };
 
   function syncCeremoniesToVivaah(iso) {

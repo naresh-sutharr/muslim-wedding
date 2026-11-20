@@ -26,6 +26,7 @@
   --font-display: "Fraunces", Georgia, serif;
   --font-names: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-arabic: "Amiri", "Noto Naskh Arabic", serif;
   --font-devanagari: "Tiro Devanagari Sanskrit", "Nirmala UI", serif;
 
   --royale-maroon: #560f31;
@@ -227,6 +228,26 @@ body::before {
   pointer-events: none;
   user-select: none;
   -webkit-user-drag: none;
+  animation: ry-taj-drift 28s ease-in-out infinite alternate;
+  transform-origin: center 40%;
+}
+
+@keyframes ry-taj-drift {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.06) translateY(-1.2%);
+  }
+}
+
+.royale-hero__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* Only one of the two is on screen: the video below 700px, the still from
@@ -282,10 +303,7 @@ body::before {
   align-items: center;
   text-align: center;
   font-weight: normal;
-  color: var(--royale-maroon);
-  text-shadow:
-    0 0 1cqw rgb(253 242 225 / 0.6),
-    0 0 4cqw rgb(253 242 225 / 0.5);
+  z-index: 5;
 }
 
 .royale-couple:focus {
@@ -303,7 +321,12 @@ body::before {
   font-size: min(13cqw, 64px);
   font-style: italic;
   font-weight: 600;
-  line-height: 1;
+  line-height: 1.1;
+  color: #fff6d9;
+  background: linear-gradient(135deg, #ffffff 0%, #fae69e 35%, #e5c07b 70%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 16px rgba(212, 175, 55, 0.5));
 }
 
 .royale-couple__amp {
@@ -313,12 +336,11 @@ body::before {
   font-style: italic;
   font-weight: 500;
   line-height: 1;
-  color: var(--royale-crimson);
+  color: #fae69e;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9));
 }
 
-/* From 700px up the mandap still takes over from the video, and the names -
-   sized against the frame, which is now the whole screen - take figures for
-   a landscape one. */
+/* From 700px up the names take figures for a landscape view */
 @media (min-width: 700px) {
   .royale-couple {
     top: 6%;
@@ -326,7 +348,7 @@ body::before {
   }
 
   .royale-couple__name {
-    font-size: clamp(56px, 6cqw, 96px);
+    font-size: clamp(56px, 6.2cqw, 98px);
   }
 
   .royale-couple__amp {
@@ -334,21 +356,14 @@ body::before {
   }
 }
 
-/* A landscape screen is wide and short: the names read better on one line,
-   with the ampersand between them, centred in the sky.
-
-   The sky over the names runs from the top of mandap_dusk.webp down to the
-   mandap's finials at 578 of its 1224px - 47.2% of the picture's height. The
-   picture is shown whole and the frame is exactly its height (see "Only one
-   of the two" above), so the sky's middle is 23.6% of the frame at every
-   width. translateY(-50%) centres the line on that point. */
+/* Landscape screen: names sit centered in the open sky above the Taj Mahal dome */
 @media (orientation: landscape) {
   .royale-couple {
     flex-direction: row;
     align-items: baseline;
     justify-content: center;
     gap: clamp(10px, 2cqw, 28px);
-    top: 23.6%;
+    top: 17%;
     transform: translateY(-50%);
   }
 
@@ -927,21 +942,20 @@ body::before {
   width: 43.6cqw;
 }
 
-/* The elephants' boxes include the PNG's transparent margin, so the image is
-   wider (28.1cqw) than the elephant in the design (22.3cqw) and starts at the
-   stage's edge. In front of the plaques, which their canopies overlap. */
+/* The Shahi Guldasta (Mughal royal floral urns) flanking the date plaques */
 .royale-date__elephant {
   z-index: 2;
-  top: 33.8cqw;
-  width: 28.1cqw;
+  top: 28cqw;
+  width: 17.5cqw;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.25));
 }
 
 .royale-date__elephant--left {
-  left: 0;
+  left: 0.5cqw;
 }
 
 .royale-date__elephant--right {
-  right: 0;
+  right: 0.5cqw;
   transform: scaleX(-1);
 }
 
@@ -1101,27 +1115,112 @@ body::before {
   cursor: default;
 }
 
-/* Spent the moment it is pressed; visibility rather than display so the
-   line that replaces it takes the same spot without a jump. The delay lets
-   the press itself be seen first. */
-.is-revealing .royale-date__btn,
-.is-revealed .royale-date__btn {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 380ms ease 170ms, visibility 0s linear 550ms;
+/* Reveal button and after-reveal countdown states */
+.royale-date__btn {
+  display: block;
 }
 
-.royale-date__after {
-  position: absolute;
-  margin: 0;
-  white-space: nowrap;
+.royale-date.is-revealing .royale-date__btn,
+.royale-date.is-revealed .royale-date__btn {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Before reveal: countdown and after-text are strictly hidden */
+.royale-date__after,
+.royale-date__after[hidden],
+.royale-date:not(.is-revealed) .royale-date__after {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Once revealed: button disappears and countdown appears cleanly centered */
+.royale-date.is-revealed .royale-date__after {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  position: relative;
+  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8cqw;
+  animation: ry-appear 620ms ease both;
+  z-index: 5;
+}
+
+.royale-countdown__tagline {
   font-family: var(--font-names);
-  font-size: clamp(22px, 3.4cqw, 40px);
+  font-size: clamp(20px, 3cqw, 36px);
   font-style: italic;
   font-weight: 600;
   line-height: 1;
   color: var(--royale-crimson);
-  animation: ry-appear 620ms ease 200ms both;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+.royale-countdown {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.9cqw, 10px);
+  padding: 0.7cqw 1.8cqw;
+  background: radial-gradient(circle at center, rgb(74 2 30 / 0.92), rgb(44 1 18 / 0.96));
+  border: 1.5px solid #d4af37;
+  border-radius: 999px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.28),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.royale-countdown__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: clamp(36px, 5.8cqw, 66px);
+}
+
+.royale-countdown__num {
+  font-family: var(--font-names);
+  font-size: clamp(16px, 2.6cqw, 30px);
+  font-weight: 700;
+  line-height: 1;
+  color: #fff2cb;
+  background: linear-gradient(180deg, #ffffff 0%, #fae69e 50%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+}
+
+.royale-countdown__txt {
+  font-family: var(--font-cap);
+  font-size: clamp(7px, 0.9cqw, 11px);
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: #e5c07b;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+.royale-countdown__dot {
+  font-family: var(--font-names);
+  font-size: clamp(14px, 2.2cqw, 24px);
+  color: #d4af37;
+  font-weight: bold;
+  opacity: 0.85;
+  animation: ry-pulse 1.2s infinite ease-in-out;
+  margin-top: -3px;
+}
+
+@keyframes ry-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.92); }
+  50% { opacity: 1; transform: scale(1.08); }
 }
 
 /* The gold thrown up as the date lands (date-reveal.js builds the flakes and
@@ -1290,24 +1389,24 @@ body::before {
     font-size: clamp(8px, 1.6cqw, 15px);
   }
 
-  /* Beside the row and a little below it, as on a desktop - their canopies
-     overlapping the outer plaques, which they stand in front of. */
+  /* Shahi Guldastas flanking date plaque on mobile */
   .royale-date__elephant {
-    top: 34.8cqw;
-    width: 32.7cqw;
+    top: 27cqw;
+    width: 20cqw;
   }
 
   .royale-date__elephant--left {
-    left: calc(-24px - 5.5cqw);
+    left: -2cqw;
   }
 
   .royale-date__elephant--right {
-    right: calc(-24px - 5.5cqw);
+    right: -2cqw;
+    transform: scaleX(-1);
   }
 
   /* Between the two of them, just under the plaques. */
   .royale-date__action {
-    top: 52cqw;
+    top: 51cqw;
   }
 }
 
@@ -3014,13 +3113,12 @@ body::before {
 .royale-card__symbol {
   display: block;
   flex: none;
-  /* The symbol SVGs carry blank margin around the figure; 98u draws the
-     Ganesha itself ~80u tall, as in the design. */
+  /* The symbol SVGs carry blank margin around the figure */
   width: calc(98 * var(--u));
   aspect-ratio: 1 / 1;
   background-color: currentColor;
-  -webkit-mask: url("symbols/_ganesha.svg") center / contain no-repeat;
-  mask: url("symbols/_ganesha.svg") center / contain no-repeat;
+  -webkit-mask: url("symbols/_islamic.svg") center / contain no-repeat;
+  mask: url("symbols/_islamic.svg") center / contain no-repeat;
 }
 
 .royale-card__mantra,
@@ -3029,14 +3127,14 @@ body::before {
   margin: 0;
 }
 
-/* Tiro ships in one weight; 700 is the same synthesised bold papercut sets
-   its invocation in. The loose line-height leaves room for श्री's repha. */
+/* Islamic Bismillah and Arabic invocation typography */
 .royale-card__mantra {
   margin-top: calc(8 * var(--u));
-  font-family: var(--font-devanagari);
-  font-size: calc(25 * var(--u));
+  font-family: var(--font-arabic), serif;
+  font-size: calc(26 * var(--u));
   font-weight: 700;
-  line-height: 1.45;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
 }
 
 .royale-card__guest {

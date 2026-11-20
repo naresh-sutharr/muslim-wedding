@@ -1,12 +1,13 @@
-// Royale - Wedding Invitation Configuration for Gunjan & Sagar
+// Royale - Wedding Invitation Configuration for Shaziyabanu & Mohammed Fahim
 (function () {
   const params = new URLSearchParams(location.search);
   const mode = params.has('edit') ? 'edit' : params.has('preview') ? 'preview' : 'view';
   const trial = false;
   const TRIAL_EDITABLE = ['invocation.religion', 'brideName', 'groomName'];
-  const STORAGE_KEY = 'royaleConfig_GunjanSagar_v3';
+  const STORAGE_KEY = 'royaleConfig_ShaziyabanuFahim_v4';
 
   const SYMBOLS = [
+    { id: 'islamic', label: 'Bismillah & Crescent', src: 'symbols/_islamic.svg' },
     { id: 'ganesha', label: 'Ganesha', src: 'symbols/_ganesha.svg' },
     { id: 'buddha', label: 'Buddha', src: 'symbols/_buddha.svg' },
     { id: 'sindhi', label: 'Jhulelal', src: 'symbols/_sindhi.svg' },
@@ -19,6 +20,15 @@
   ];
 
   const INVOCATIONS = {
+    islamic: {
+      label: 'Islamic',
+      english: 'In the name of Allah, the Most Beneficent, the Most Merciful',
+      scripts: {
+        arabic: { label: 'Arabic (Bismillah)', text: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ', font: 'Amiri', rtl: true },
+        quranic: { label: 'Qur\'an Verse (30:21)', text: 'وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً', font: 'Amiri', rtl: true },
+        urdu: { label: 'Urdu', text: 'شروع اللہ کے نام سے جو بڑا مہربان نہایت رحم والا ہے', font: 'Noto Naskh Arabic', rtl: true },
+      },
+    },
     hindu: {
       label: 'Hindu',
       english: 'Shri Ganeshaya Namah',
@@ -52,17 +62,17 @@
     const sel = inv && inv.script;
     if (sel === 'custom') {
       return {
-        religion: (inv && inv.religion) || 'hindu', script: 'custom',
+        religion: (inv && inv.religion) || 'islamic', script: 'custom',
         text: (inv && inv.custom) || '', font: '', rtl: false, isEnglish: false, isCustom: true,
       };
     }
     if (sel === 'blank') {
       return {
-        religion: (inv && inv.religion) || 'hindu', script: 'blank',
+        religion: (inv && inv.religion) || 'islamic', script: 'blank',
         text: '', font: '', rtl: false, isEnglish: false, isBlank: true,
       };
     }
-    const religion = INVOCATIONS[(inv && inv.religion)] ? inv.religion : 'hindu';
+    const religion = INVOCATIONS[(inv && inv.religion)] ? inv.religion : 'islamic';
     const rel = INVOCATIONS[religion];
     const scriptKeys = Object.keys(rel.scripts);
     let chosen;
@@ -77,15 +87,15 @@
     return { religion: religion, script: chosen, text: scr.text, font: scr.font, rtl: !!scr.rtl, isEnglish: false };
   }
 
-  const VIVAAH_ISO = '2026-11-21';
+  const NIKAH_ISO = '2026-12-23';
 
   const GALLERY_STARTERS = [
     { type: 'portrait', image: '1.png', placeholder: false, caption: '#howitstarted', hang: 118 },
     { type: 'landscape', image: '2.png', placeholder: false, caption: '#adventures', hang: 150 },
-    { type: 'story', text: 'Some stories begin with grand gestures. Ours started with a simple conversation.', hang: 86 },
+    { type: 'story', text: '“And He placed between you affection and mercy.” — Qur’an (30:21)\nSome stories begin with grand blessings. Ours started with a simple, pure connection.', hang: 86 },
     { type: 'portrait', image: '3.png', placeholder: false, caption: '#thelittlethings', hang: 132 },
     { type: 'landscape', image: '4.png', placeholder: false, caption: '#everyday', hang: 100 },
-    { type: 'story', text: "Friendship grew into something more, and we realized life's best moments were the ones we shared together.", hang: 120 },
+    { type: 'story', text: "With trust in Allah and love in our hearts, we realized life's most precious moments are the ones we share together.", hang: 120 },
     { type: 'portrait', image: '5.png', placeholder: false, caption: '#foreverbegins', hang: 150 },
     { type: 'landscape', image: '6.png', placeholder: false, caption: '#usforever', hang: 92 },
   ];
@@ -94,38 +104,38 @@
     version: 1,
     finalized: true,
 
-    invocation: { symbol: 'ganesha', religion: 'hindu', script: 'devanagari', custom: '' },
+    invocation: { symbol: 'islamic', religion: 'islamic', script: 'arabic', custom: '' },
 
-    brideName: 'Gunjan',
-    groomName: 'Sagar',
-    title: 'Gunjan & Sagar',
-    hostNames: ['Gunjan', 'Sagar'],
+    brideName: 'Shaziyabanu',
+    groomName: 'Mohammed Fahim',
+    title: 'Shaziyabanu & Mohammed Fahim',
+    hostNames: ['Shaziyabanu', 'Mohammed Fahim'],
 
-    introNote: 'we cordially invite you to grace the auspicious occasion of the marriage of…',
+    introNote: 'With hearts full of gratitude to Allah, Mrs. Raziya Khatoon (W/o Late Jamil Ahmed Siddiqui) requests the pleasure of your presence and blessings on the joyous occasion of the Nikah of her beloved granddaughter…',
 
-    eventISO: VIVAAH_ISO,
+    eventISO: NIKAH_ISO,
     revealButton: 'Reveal the Date',
     revealAfter: 'Save the Date',
 
     groomFamily: {
       enabled: true,
-      name: 'Chi. Sagar',
-      relLabel: 'Son of',
-      parentA: 'Shri Ramesh Chandra Sharma',
-      parentB: 'Smt. Sunita Sharma',
-      grandLabel: 'Grandson of',
-      grandA: 'Late Shri Pandit Brij Mohan Sharma',
-      grandB: 'Late Smt. Kamla Devi Sharma',
+      name: 'Mohammed Fahim',
+      relLabel: 'Beloved Son of',
+      parentA: 'Mr. Zamirul Hasan',
+      parentB: 'Mrs. Zamirul Hasan',
+      grandLabel: 'With Blessings of',
+      grandA: 'Family Elders',
+      grandB: 'Near & Dear Ones',
     },
     brideFamily: {
       enabled: true,
-      name: 'Kum. Gunjan',
-      relLabel: 'Daughter of',
-      parentA: 'Shri Rajesh Kumar Verma',
-      parentB: 'Smt. Meera Verma',
-      grandLabel: 'Granddaughter of',
-      grandA: 'Late Shri Hari Prasad Verma',
-      grandB: 'Late Smt. Shanti Devi Verma',
+      name: 'Shaziyabanu Siddiqui',
+      relLabel: 'Beloved Daughter of',
+      parentA: 'Mr. Shakeel Ahmed Siddiqui',
+      parentB: 'Mrs. Shakeel Ahmed Siddiqui',
+      grandLabel: 'Beloved Granddaughter of',
+      grandA: 'Late Jamil Ahmed Siddiqui',
+      grandB: 'Mrs. Raziya Khatoon',
     },
 
     gallery: {
@@ -135,39 +145,39 @@
 
     ceremonies: [
       {
-        name: 'Mehndi',
-        art: 'media/mehendi.webp',
-        date: '2026-11-19',
-        time: '18:00',
-        venue: '144, Randaldham society, new sama road, Vadodara-390024',
-        mapUrl: 'https://www.google.com/maps/search/?api=1&query=144%2C+Randaldham+society%2C+new+sama+road%2C+Vadodara-390024',
-        enabled: true
-      },
-      {
-        name: 'Haldi',
+        name: 'Haldi Ceremony',
         art: 'media/haldi.webp',
-        date: '2026-11-20',
-        time: '10:00',
-        venue: 'Shivay Party Plot, Sama Savli Road, near narmada canal, Vadodara-Gujarat 390024',
-        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Shivay+Party+Plot%2C+Sama+Savli+Road%2C+near+narmada+canal%2C+Vadodara-Gujarat+390024',
+        date: '2026-12-22',
+        time: '16:00',
+        venue: 'House no. 42, Anwar Park Society, Behind Hariyali Society, Ahmedabad 380055',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=House+no.+42%2C+Anwar+Park+Society%2C+Behind+Hariyali+Society%2C+Ahmedabad+380055',
         enabled: true
       },
       {
-        name: 'Sangeet',
-        art: 'media/sangeet.webp',
-        date: '2026-11-20',
-        time: '18:00',
-        venue: 'Shivay Party Plot, Sama Savli Road, near narmada canal, Vadodara-Gujarat 390024',
-        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Shivay+Party+Plot%2C+Sama+Savli+Road%2C+near+narmada+canal%2C+Vadodara-Gujarat+390024',
-        enabled: true
-      },
-      {
-        name: 'Wedding Day',
-        art: 'media/vivaah.webp',
-        date: '2026-11-21',
+        name: 'Nikah',
+        art: 'media/nikah.png',
+        date: '2026-12-23',
         time: '19:00',
-        venue: 'Shivay Party Plot, Sama Savli Road, near narmada canal, Vadodara-Gujarat 390024',
-        mapUrl: 'https://www.google.com/maps/search/?api=1&query=Shivay+Party+Plot%2C+Sama+Savli+Road%2C+near+narmada+canal%2C+Vadodara-Gujarat+390024',
+        venue: 'HG FARM, Piplaj - Pirana Road, Near Calico Mills, Behrampura, Ahmedabad, Gujarat - 382405',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=HG+FARM%2C+Piplaj+-+Pirana+Road%2C+Near+Calico+Mills%2C+Behrampura%2C+Ahmedabad%2C+Gujarat+-+382405',
+        enabled: true
+      },
+      {
+        name: 'Dawat-e-Nikah',
+        art: 'media/reception.webp',
+        date: '2026-12-23',
+        time: '20:00',
+        venue: 'HG FARM, Piplaj - Pirana Road, Near Calico Mills, Behrampura, Ahmedabad, Gujarat - 382405',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=HG+FARM%2C+Piplaj+-+Pirana+Road%2C+Near+Calico+Mills%2C+Behrampura%2C+Ahmedabad%2C+Gujarat+-+382405',
+        enabled: true
+      },
+      {
+        name: 'Rukhsati (Vidai)',
+        art: 'media/rukhsati.png',
+        date: '2026-12-24',
+        time: '15:30',
+        venue: 'House no. 42, Anwar Park Society, Behind Hariyali Society, Ahmedabad 380055',
+        mapUrl: 'https://www.google.com/maps/search/?api=1&query=House+no.+42%2C+Anwar+Park+Society%2C+Behind+Hariyali+Society%2C+Ahmedabad+380055',
         enabled: true
       }
     ],
@@ -176,22 +186,25 @@
       enabled: true,
       lead: 'With Best Compliments From:',
       lines: [
-        'Family and Friends',
-        'Near & Dear Ones',
+        'With the blessings of Late Jamil Ahmed Siddiqui',
+        'Mrs. Raziya Khatoon (W/o Late Jamil Ahmed Siddiqui)',
+        'Mr. & Mrs. Shakeel Ahmed Siddiqui',
+        'Near & Dear Ones · Siddiqui & Hasan Families',
+        'Contact: +91 94284 18285',
       ],
     },
 
     note: {
       enabled: true,
-      lead: 'A Note From Us',
-      text: 'We can’t wait to celebrate this special day with you. Thank you for being part of our journey.',
+      lead: 'A Verse From The Holy Qur’an',
+      text: '“And He placed between you affection and mercy.” — Qur\'an (30:21)\n\nWith hearts full of gratitude to Allah, Mrs. Raziya Khatoon (W/o Late Jamil Ahmed Siddiqui) requests the pleasure of your presence and blessings on the joyous occasion of the Nikah of her beloved granddaughter Shaziyabanu with Mohammed Fahim.',
     },
 
-    farewell: { line: 'Your Presence Means the World to Us' },
+    farewell: { line: 'Your Duas & Presence Mean the World to Us' },
 
-    social: { instagram: true, instagramUrl: 'https://www.instagram.com/thebeguiling_' },
+    social: { instagram: false, instagramUrl: '' },
 
-    music: { enabled: true, src: 'music/Jashn-e-bahara Instrumental.mp3', volume: 0.6 },
+    music: { enabled: true, src: 'music/Khwaja Mere Khwaja.mp3', volume: 0.65 },
   };
 
   function deepMerge(base, over) {

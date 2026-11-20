@@ -148,10 +148,67 @@
     layer.appendChild(el);
   }
 
+  var countdownTimer = null;
+  function startCountdown() {
+    if (countdownTimer) return;
+    var afterEl = document.getElementById('ryRevealAfter');
+    if (!afterEl) return;
+
+    // Ensure countdown HTML exists inside afterEl
+    if (!afterEl.querySelector('.royale-countdown')) {
+      afterEl.innerHTML =
+        '<p class="royale-countdown__tagline">Save the Date</p>' +
+        '<div class="royale-countdown" id="ryCountdown" role="timer" aria-label="Countdown to Nikah">' +
+        '  <div class="royale-countdown__box"><span class="royale-countdown__num" id="cdDays">00</span><span class="royale-countdown__txt">DAYS</span></div>' +
+        '  <span class="royale-countdown__dot">:</span>' +
+        '  <div class="royale-countdown__box"><span class="royale-countdown__num" id="cdHours">00</span><span class="royale-countdown__txt">HOURS</span></div>' +
+        '  <span class="royale-countdown__dot">:</span>' +
+        '  <div class="royale-countdown__box"><span class="royale-countdown__num" id="cdMins">00</span><span class="royale-countdown__txt">MINS</span></div>' +
+        '  <span class="royale-countdown__dot">:</span>' +
+        '  <div class="royale-countdown__box"><span class="royale-countdown__num" id="cdSecs">00</span><span class="royale-countdown__txt">SECS</span></div>' +
+        '</div>';
+    }
+
+    var targetDate = new Date(when.year, when.month - 1, when.day, 19, 0, 0); // 7:00 PM Nikah
+    var dEl = document.getElementById('cdDays');
+    var hEl = document.getElementById('cdHours');
+    var mEl = document.getElementById('cdMins');
+    var sEl = document.getElementById('cdSecs');
+    if (!dEl || !hEl || !mEl || !sEl) return;
+
+    function update() {
+      var now = new Date();
+      var diff = targetDate.getTime() - now.getTime();
+      if (diff <= 0) {
+        dEl.textContent = '00';
+        hEl.textContent = '00';
+        mEl.textContent = '00';
+        sEl.textContent = '00';
+        if (countdownTimer) clearInterval(countdownTimer);
+        return;
+      }
+      var totalSecs = Math.floor(diff / 1000);
+      var days = Math.floor(totalSecs / 86400);
+      var hours = Math.floor((totalSecs % 86400) / 3600);
+      var mins = Math.floor((totalSecs % 3600) / 60);
+      var secs = totalSecs % 60;
+
+      dEl.textContent = days < 10 ? '0' + days : String(days);
+      hEl.textContent = hours < 10 ? '0' + hours : String(hours);
+      mEl.textContent = mins < 10 ? '0' + mins : String(mins);
+      sEl.textContent = secs < 10 ? '0' + secs : String(secs);
+    }
+    update();
+    countdownTimer = setInterval(update, 1000);
+  }
+
   function finish() {
     section.classList.remove('is-revealing');
     section.classList.add('is-revealed');
-    if (after) after.hidden = false;
+    if (after) {
+      after.hidden = false;
+      startCountdown();
+    }
   }
 
   /**

@@ -4,22 +4,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Gunjan &amp; Sagar - Wedding Invitation</title>
+    <title>Shaziyabanu &amp; Mohammed Fahim - Wedding Invitation</title>
 
     <!-- Fraunces (cover greeting), Cormorant Garamond (couple names) and Sora -->
     <link rel="stylesheet" href="_platform/vendor/fonts/fonts.css">
 
-    <!-- The invocation's Devanagari face -->
+    <!-- Arabic and Devanagari typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Noto+Naskh+Arabic:wght@400;600;700&family=Tiro+Devanagari+Sanskrit&display=swap">
 
-    <!-- Preload Ganesha symbol mask -->
-    <link rel="preload" as="image" href="symbols/_ganesha.svg" crossorigin>
+    <!-- Preload Islamic symbol mask -->
+    <link rel="preload" as="image" href="symbols/_islamic.svg" crossorigin>
     
     <!-- Hero images preload -->
-    <link rel="preload" as="image" href="media/garden_palace_poster.webp" media="(max-width: 699px)">
-    <link rel="preload" as="image" href="media/mandap_dusk.webp" media="(min-width: 700px)">
+    <link rel="preload" as="image" href="media/taj_mahal_dusk.jpg">
 
     <!-- Platform styling: toolbar, RSVP, and music controls -->
     <link rel="stylesheet" href="_platform/toolbar.css">
@@ -53,20 +52,20 @@
             <img class="royale-gate__floral" src="media/floral1.png" alt="" draggable="false">
         </div>
         <div class="royale-gate__decor royale-gate__decor--elephant-left" aria-hidden="true">
-            <img class="royale-gate__elephant" src="media/elephant.png" alt="" draggable="false">
+            <img class="royale-gate__elephant" src="media/fanoos.png" alt="" draggable="false">
         </div>
         <div class="royale-gate__decor royale-gate__decor--elephant-right" aria-hidden="true">
-            <img class="royale-gate__elephant" src="media/elephant.png" alt="" draggable="false">
+            <img class="royale-gate__elephant" src="media/fanoos.png" alt="" draggable="false">
         </div>
 
         <!-- The card wrapped across both doors -->
         <div class="royale-card">
             <span class="royale-card__motif" aria-hidden="true"></span>
             <span class="royale-card__symbol" aria-hidden="true"></span>
-            <p class="royale-card__mantra" id="ryInvocation" lang="sa">श्री गणेशाय नमः</p>
+            <p class="royale-card__mantra" id="ryInvocation" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
             <p class="royale-card__guest" id="ryGuestGreeting">Family &amp; Friends</p>
             <p class="royale-card__note" id="ryIntroNote">
-                we cordially invite you to grace the auspicious occasion of the marriage of&hellip;
+                With hearts full of gratitude to Allah, Mrs. Raziya Khatoon (W/o Late Jamil Ahmed Siddiqui) requests the pleasure of your presence and blessings on the joyous occasion of the Nikah of her beloved granddaughter&hellip;
             </p>
 
             <span class="royale-card__cue ry-plaque" aria-hidden="true">
@@ -106,23 +105,19 @@
         </div>
     </div>
 
-    <!-- The beach / mandap hero scene -->
+    <!-- The Taj Mahal / Shahi Palace hero scene -->
     <section class="royale-hero" aria-label="The couple">
         <div class="royale-hero__frame">
-            <video class="royale-hero__image royale-hero__video" id="ryHeroVideo" muted loop playsinline
-                preload="auto" data-src="media/garden_palace.mp4" data-poster="media/garden_palace_poster.webp"
-                data-from="(max-width: 699px)" disablepictureinpicture aria-hidden="true" tabindex="-1"></video>
-
             <picture class="royale-hero__still">
-                <source media="(max-width: 699px)" srcset="media/garden_palace_poster.webp">
-                <img class="royale-hero__image" src="media/mandap_dusk.webp" width="2322" height="1224" alt=""
+                <img class="royale-hero__image" id="ryHeroImg" src="media/taj_mahal_dusk.jpg" width="2322" height="1224" alt="Royal Taj Mahal at Dusk"
                     aria-hidden="true" draggable="false">
             </picture>
+            <canvas class="royale-hero__canvas" id="ryHeroCanvas" aria-hidden="true"></canvas>
 
             <h1 class="royale-couple" id="ryCouple" tabindex="-1">
-                <span class="royale-couple__name" id="ryBrideName">Gunjan</span>
+                <span class="royale-couple__name" id="ryBrideName">Shaziyabanu</span>
                 <span class="royale-couple__amp">&amp;</span>
-                <span class="royale-couple__name" id="ryGroomName">Sagar</span>
+                <span class="royale-couple__name" id="ryGroomName">Mohammed Fahim</span>
             </h1>
         </div>
 
@@ -136,18 +131,18 @@
                 decoding="async">
             <div class="royale-scroll__window">
                 <div class="royale-scroll__sheet">
-                    <h2 class="royale-scroll__name" id="ryGroomCardName">Chi. Sagar</h2>
+                    <h2 class="royale-scroll__name" id="ryGroomCardName">Mohammed Fahim</h2>
                     <p class="royale-scroll__block">
-                        <span class="royale-scroll__rel" id="ryGroomRelLabel">Son of</span>
-                        <span class="royale-scroll__elder" id="ryGroomParentA">Shri Ramesh Chandra Sharma</span>
+                        <span class="royale-scroll__rel" id="ryGroomRelLabel">Beloved Son of</span>
+                        <span class="royale-scroll__elder" id="ryGroomParentA">Mr. Zamirul Hasan</span>
                         <span class="royale-scroll__amp">&amp;</span>
-                        <span class="royale-scroll__elder" id="ryGroomParentB">Smt. Sunita Sharma</span>
+                        <span class="royale-scroll__elder" id="ryGroomParentB">Mrs. Zamirul Hasan</span>
                     </p>
                     <p class="royale-scroll__block">
-                        <span class="royale-scroll__rel" id="ryGroomGrandLabel">Grandson of</span>
-                        <span class="royale-scroll__elder" id="ryGroomGrandA">Late Shri Pandit Brij Mohan Sharma</span>
+                        <span class="royale-scroll__rel" id="ryGroomGrandLabel">With Blessings of</span>
+                        <span class="royale-scroll__elder" id="ryGroomGrandA">Family Elders</span>
                         <span class="royale-scroll__amp">&amp;</span>
-                        <span class="royale-scroll__elder" id="ryGroomGrandB">Late Smt. Kamla Devi Sharma</span>
+                        <span class="royale-scroll__elder" id="ryGroomGrandB">Near &amp; Dear Ones</span>
                     </p>
                     <img class="royale-scroll__divider" src="media/divider.webp" alt="" aria-hidden="true"
                         loading="lazy" decoding="async">
@@ -176,18 +171,18 @@
                 decoding="async">
             <div class="royale-scroll__window">
                 <div class="royale-scroll__sheet">
-                    <h2 class="royale-scroll__name" id="ryBrideCardName">Kum. Gunjan</h2>
+                    <h2 class="royale-scroll__name" id="ryBrideCardName">Shaziyabanu Siddiqui</h2>
                     <p class="royale-scroll__block">
-                        <span class="royale-scroll__rel" id="ryBrideRelLabel">Daughter of</span>
-                        <span class="royale-scroll__elder" id="ryBrideParentA">Shri Rajesh Kumar Verma</span>
+                        <span class="royale-scroll__rel" id="ryBrideRelLabel">Beloved Daughter of</span>
+                        <span class="royale-scroll__elder" id="ryBrideParentA">Mr. Shakeel Ahmed Siddiqui</span>
                         <span class="royale-scroll__amp">&amp;</span>
-                        <span class="royale-scroll__elder" id="ryBrideParentB">Smt. Meera Verma</span>
+                        <span class="royale-scroll__elder" id="ryBrideParentB">Mrs. Shakeel Ahmed Siddiqui</span>
                     </p>
                     <p class="royale-scroll__block">
-                        <span class="royale-scroll__rel" id="ryBrideGrandLabel">Granddaughter of</span>
-                        <span class="royale-scroll__elder" id="ryBrideGrandA">Late Shri Hari Prasad Verma</span>
+                        <span class="royale-scroll__rel" id="ryBrideGrandLabel">Beloved Granddaughter of</span>
+                        <span class="royale-scroll__elder" id="ryBrideGrandA">Late Jamil Ahmed Siddiqui</span>
                         <span class="royale-scroll__amp">&amp;</span>
-                        <span class="royale-scroll__elder" id="ryBrideGrandB">Late Smt. Shanti Devi Verma</span>
+                        <span class="royale-scroll__elder" id="ryBrideGrandB">Mrs. Raziya Khatoon</span>
                     </p>
                     <img class="royale-scroll__divider" src="media/divider.webp" alt="" aria-hidden="true"
                         loading="lazy" decoding="async">
@@ -212,10 +207,10 @@
         </article>
     </section>
 
-    <!-- The date reveal: 21st November 2026 -->
-    <section class="royale-date" id="ryDateReveal" data-date="2026-11-21" aria-label="The date">
+    <!-- The date reveal: 23rd December 2026 -->
+    <section class="royale-date" id="ryDateReveal" data-date="2026-12-23" aria-label="The date">
         <div class="royale-date__stage">
-            <img class="royale-date__crown" src="media/lotus_bunch.png" alt="" aria-hidden="true" loading="lazy"
+            <img class="royale-date__crown" src="media/islamic_crest.png" alt="" aria-hidden="true" loading="lazy"
                 decoding="async">
             <div class="royale-date__plaques" role="group" aria-label="Wedding date">
                 <div class="royale-date__plaque" data-dial="day">
@@ -237,9 +232,9 @@
                     </div>
                 </div>
             </div>
-            <img class="royale-date__elephant royale-date__elephant--left" src="media/elephant.png" alt=""
+            <img class="royale-date__elephant royale-date__elephant--left" src="media/guldasta.png" alt="Shahi Guldasta"
                 aria-hidden="true" loading="lazy" decoding="async">
-            <img class="royale-date__elephant royale-date__elephant--right" src="media/elephant.png" alt=""
+            <img class="royale-date__elephant royale-date__elephant--right" src="media/guldasta.png" alt="Shahi Guldasta"
                 aria-hidden="true" loading="lazy" decoding="async">
 
             <div class="royale-date__action">
@@ -277,7 +272,30 @@
                     </svg>
                     <span class="ry-plaque__label">Reveal the Date</span>
                 </button>
-                <p class="royale-date__after" id="ryRevealAfter" hidden>Save the Date</p>
+                <div class="royale-date__after" id="ryRevealAfter" hidden>
+                    <p class="royale-countdown__tagline">Save the Date</p>
+                    <div class="royale-countdown" id="ryCountdown" role="timer" aria-label="Countdown to Nikah">
+                        <div class="royale-countdown__box">
+                            <span class="royale-countdown__num" id="cdDays">00</span>
+                            <span class="royale-countdown__txt">DAYS</span>
+                        </div>
+                        <span class="royale-countdown__dot">:</span>
+                        <div class="royale-countdown__box">
+                            <span class="royale-countdown__num" id="cdHours">00</span>
+                            <span class="royale-countdown__txt">HOURS</span>
+                        </div>
+                        <span class="royale-countdown__dot">:</span>
+                        <div class="royale-countdown__box">
+                            <span class="royale-countdown__num" id="cdMins">00</span>
+                            <span class="royale-countdown__txt">MINS</span>
+                        </div>
+                        <span class="royale-countdown__dot">:</span>
+                        <div class="royale-countdown__box">
+                            <span class="royale-countdown__num" id="cdSecs">00</span>
+                            <span class="royale-countdown__txt">SECS</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <p class="royale-date__said" id="ryRevealSaid" aria-live="polite"></p>
         </div>
@@ -357,7 +375,7 @@
                         <div class="gframe__face">
                             <div class="gframe__lip">
                                 <div class="gframe__mat gframe__story">
-                                    <p>Some stories begin with grand gestures. Ours started with a simple conversation.</p>
+                                    <p>&ldquo;And He placed between you affection and mercy.&rdquo;<br><span style="font-size:0.85em; opacity:0.85;">&mdash; Qur'an (30:21)</span><br><br>Some stories begin with grand blessings. Ours started with a simple, pure connection.</p>
                                 </div>
                             </div>
                         </div>
@@ -425,7 +443,7 @@
                         <div class="gframe__face">
                             <div class="gframe__lip">
                                 <div class="gframe__mat gframe__story">
-                                    <p>Friendship grew into something more, and we realized life's best moments were the ones we shared together.</p>
+                                    <p>With trust in Allah and love in our hearts, we realized life's most precious moments are the ones we share together.</p>
                                 </div>
                             </div>
                         </div>
@@ -496,55 +514,29 @@
         </defs>
     </svg>
 
-    <!-- Ceremonies Section: 4 ceremonies for Gunjan & Sagar -->
+    <!-- Ceremonies Section: 4 ceremonies for Shaziyabanu & Mohammed Fahim -->
     <section class="royale-ceremonies" aria-label="Ceremonies">
-        <h2 class="ryc-title">Ceremonies</h2>
+        <h2 class="ryc-title">Wedding Ceremonies</h2>
         <div class="ryc-grid">
-            <!-- 1. Mehndi -->
-            <article class="ryc-card" data-offset="-2" data-time="18:00">
-                <div class="ryc-card__inner">
-                    <div class="ryc-card__artwell">
-                        <img class="ryc-card__art" src="media/mehendi.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
-                    </div>
-                    <h3 class="ryc-card__name">Mehndi</h3>
-                    <div class="ryc-card__foot">
-                        <div class="ryc-card__where">
-                            <p class="ryc-card__venue">144, Randaldham society, new sama road, Vadodara-390024</p>
-                            <a class="ryc-card__map"
-                                href="https://www.google.com/maps/search/?api=1&amp;query=144%2C+Randaldham+society%2C+new+sama+road%2C+Vadodara-390024"
-                                target="_blank" rel="noopener" aria-label="Mehndi venue on the map">
-                                <img src="media/location.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
-                            </a>
-                        </div>
-                        <p class="ryc-card__when">
-                            <span class="ryc-card__date" data-date>Thu, 19 Nov 2026</span>
-                            <span class="ryc-card__time" data-time>6:00 PM</span>
-                        </p>
-                    </div>
-                </div>
-            </article>
-
-            <img class="ryc-divider" src="media/divider2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
-
-            <!-- 2. Haldi -->
-            <article class="ryc-card" data-offset="-1" data-time="10:00">
+            <!-- 1. Haldi Ceremony -->
+            <article class="ryc-card" data-offset="-1" data-time="16:00">
                 <div class="ryc-card__inner">
                     <div class="ryc-card__artwell">
                         <img class="ryc-card__art" src="media/haldi.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     </div>
-                    <h3 class="ryc-card__name">Haldi</h3>
+                    <h3 class="ryc-card__name">Haldi Ceremony</h3>
                     <div class="ryc-card__foot">
                         <div class="ryc-card__where">
-                            <p class="ryc-card__venue">Shivay Party Plot, Sama Savli Road, near narmada canal, Vadodara-Gujarat 390024</p>
+                            <p class="ryc-card__venue">House no. 42, Anwar Park Society, Behind Hariyali Society, Ahmedabad 380055</p>
                             <a class="ryc-card__map"
-                                href="https://www.google.com/maps/search/?api=1&amp;query=Shivay+Party+Plot%2C+Sama+Savli+Road%2C+near+narmada+canal%2C+Vadodara-Gujarat+390024"
-                                target="_blank" rel="noopener" aria-label="Haldi venue on the map">
+                                href="https://www.google.com/maps/search/?api=1&amp;query=House+no.+42%2C+Anwar+Park+Society%2C+Behind+Hariyali+Society%2C+Ahmedabad+380055"
+                                target="_blank" rel="noopener" aria-label="Haldi Ceremony venue on the map">
                                 <img src="media/location.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                             </a>
                         </div>
                         <p class="ryc-card__when">
-                            <span class="ryc-card__date" data-date>Fri, 20 Nov 2026</span>
-                            <span class="ryc-card__time" data-time>10:00 AM</span>
+                            <span class="ryc-card__date" data-date>Tue, 22 Dec 2026</span>
+                            <span class="ryc-card__time" data-time>4:00 PM</span>
                         </p>
                     </div>
                 </div>
@@ -552,25 +544,51 @@
 
             <img class="ryc-divider" src="media/divider2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
 
-            <!-- 3. Sangeet -->
-            <article class="ryc-card" data-offset="-1" data-time="18:00">
+            <!-- 2. Nikah -->
+            <article class="ryc-card" data-offset="0" data-time="19:00">
                 <div class="ryc-card__inner">
                     <div class="ryc-card__artwell">
-                        <img class="ryc-card__art" src="media/sangeet.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                        <img class="ryc-card__art" src="media/nikah.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     </div>
-                    <h3 class="ryc-card__name">Sangeet</h3>
+                    <h3 class="ryc-card__name">Nikah</h3>
                     <div class="ryc-card__foot">
                         <div class="ryc-card__where">
-                            <p class="ryc-card__venue">Shivay Party Plot, Sama Savli Road, near narmada canal, Vadodara-Gujarat 390024</p>
+                            <p class="ryc-card__venue">HG FARM, Piplaj - Pirana Road, Near Calico Mills, Behrampura, Ahmedabad, Gujarat - 382405</p>
                             <a class="ryc-card__map"
-                                href="https://www.google.com/maps/search/?api=1&amp;query=Shivay+Party+Plot%2C+Sama+Savli+Road%2C+near+narmada+canal%2C+Vadodara-Gujarat+390024"
-                                target="_blank" rel="noopener" aria-label="Sangeet venue on the map">
+                                href="https://www.google.com/maps/search/?api=1&amp;query=HG+FARM%2C+Piplaj+-+Pirana+Road%2C+Near+Calico+Mills%2C+Behrampura%2C+Ahmedabad%2C+Gujarat+-+382405"
+                                target="_blank" rel="noopener" aria-label="Nikah venue on the map">
                                 <img src="media/location.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                             </a>
                         </div>
                         <p class="ryc-card__when">
-                            <span class="ryc-card__date" data-date>Fri, 20 Nov 2026</span>
-                            <span class="ryc-card__time" data-time>6:00 PM</span>
+                            <span class="ryc-card__date" data-date>Wed, 23 Dec 2026</span>
+                            <span class="ryc-card__time" data-time>7:00 PM (In Sha Allah)</span>
+                        </p>
+                    </div>
+                </div>
+            </article>
+
+            <img class="ryc-divider" src="media/divider2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+            <!-- 3. Dawat-e-Nikah -->
+            <article class="ryc-card" data-offset="0" data-time="20:00">
+                <div class="ryc-card__inner">
+                    <div class="ryc-card__artwell">
+                        <img class="ryc-card__art" src="media/reception.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                    </div>
+                    <h3 class="ryc-card__name">Dawat-e-Nikah</h3>
+                    <div class="ryc-card__foot">
+                        <div class="ryc-card__where">
+                            <p class="ryc-card__venue">HG FARM, Piplaj - Pirana Road, Near Calico Mills, Behrampura, Ahmedabad, Gujarat - 382405</p>
+                            <a class="ryc-card__map"
+                                href="https://www.google.com/maps/search/?api=1&amp;query=HG+FARM%2C+Piplaj+-+Pirana+Road%2C+Near+Calico+Mills%2C+Behrampura%2C+Ahmedabad%2C+Gujarat+-+382405"
+                                target="_blank" rel="noopener" aria-label="Dawat-e-Nikah venue on the map">
+                                <img src="media/location.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                            </a>
+                        </div>
+                        <p class="ryc-card__when">
+                            <span class="ryc-card__date" data-date>Wed, 23 Dec 2026</span>
+                            <span class="ryc-card__time" data-time>After Namaz-e-Isha</span>
                         </p>
                     </div>
                 </div>
@@ -578,25 +596,25 @@
 
             <img class="ryc-divider ryc-divider--row" src="media/divider2.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
 
-            <!-- 4. Wedding Day -->
-            <article class="ryc-card" data-offset="0" data-time="19:00">
+            <!-- 4. Rukhsati (Vidai) -->
+            <article class="ryc-card" data-offset="1" data-time="15:30">
                 <div class="ryc-card__inner">
                     <div class="ryc-card__artwell">
-                        <img class="ryc-card__art" src="media/vivaah.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+                        <img class="ryc-card__art" src="media/rukhsati.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
                     </div>
-                    <h3 class="ryc-card__name">Wedding Day</h3>
+                    <h3 class="ryc-card__name">Rukhsati (Vidai)</h3>
                     <div class="ryc-card__foot">
                         <div class="ryc-card__where">
-                            <p class="ryc-card__venue">Shivay Party Plot, Sama Savli Road, near narmada canal, Vadodara-Gujarat 390024</p>
+                            <p class="ryc-card__venue">House no. 42, Anwar Park Society, Behind Hariyali Society, Ahmedabad 380055</p>
                             <a class="ryc-card__map"
-                                href="https://www.google.com/maps/search/?api=1&amp;query=Shivay+Party+Plot%2C+Sama+Savli+Road%2C+near+narmada+canal%2C+Vadodara-Gujarat+390024"
-                                target="_blank" rel="noopener" aria-label="Wedding Day venue on the map">
+                                href="https://www.google.com/maps/search/?api=1&amp;query=House+no.+42%2C+Anwar+Park+Society%2C+Behind+Hariyali+Society%2C+Ahmedabad+380055"
+                                target="_blank" rel="noopener" aria-label="Rukhsati venue on the map">
                                 <img src="media/location.svg" alt="" aria-hidden="true" loading="lazy" decoding="async">
                             </a>
                         </div>
                         <p class="ryc-card__when">
-                            <span class="ryc-card__date" data-date>Sat, 21 Nov 2026</span>
-                            <span class="ryc-card__time" data-time>7:00 PM</span>
+                            <span class="ryc-card__date" data-date>Thu, 24 Dec 2026</span>
+                            <span class="ryc-card__time" data-time>3:30 PM</span>
                         </p>
                     </div>
                 </div>
@@ -616,8 +634,11 @@
                 <div class="royale-scroll__sheet">
                     <h2 class="royale-scroll__name" id="ryComplimentLead">With Best Compliments From:</h2>
                     <div class="royale-scroll__lines" id="ryComplimentLines">
-                        <p class="royale-scroll__line">Family and Friends</p>
-                        <p class="royale-scroll__line">Near &amp; Dear Ones</p>
+                        <p class="royale-scroll__line">With the blessings of Late Jamil Ahmed Siddiqui</p>
+                        <p class="royale-scroll__line">Mrs. Raziya Khatoon (W/o Late Jamil Ahmed Siddiqui)</p>
+                        <p class="royale-scroll__line">Mr. &amp; Mrs. Shakeel Ahmed Siddiqui</p>
+                        <p class="royale-scroll__line">Near &amp; Dear Ones &middot; Siddiqui &amp; Hasan Families</p>
+                        <p class="royale-scroll__line">Contact: +91 94284 18285</p>
                     </div>
                     <img class="royale-scroll__divider" src="media/divider.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
                 </div>
@@ -640,8 +661,8 @@
             <img class="royale-scroll__bloom" src="media/floral2.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
             <div class="royale-scroll__window">
                 <div class="royale-scroll__sheet">
-                    <h2 class="royale-scroll__name" id="ryNoteLead">A Note From Us</h2>
-                    <p class="royale-scroll__note" id="ryNoteText">We can’t wait to celebrate this special day with you. Thank you for being part of our journey.</p>
+                    <h2 class="royale-scroll__name" id="ryNoteLead">A Verse From The Holy Qur’an</h2>
+                    <p class="royale-scroll__note" id="ryNoteText">&ldquo;And He placed between you affection and mercy.&rdquo; &mdash; Qur'an (30:21)<br><br>With hearts full of gratitude to Allah, Mrs. Raziya Khatoon (W/o Late Jamil Ahmed Siddiqui) requests the pleasure of your presence and blessings on the joyous occasion of the Nikah of her beloved granddaughter Shaziyabanu with Mohammed Fahim.</p>
                     <img class="royale-scroll__divider" src="media/divider.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
                 </div>
             </div>
@@ -660,12 +681,9 @@
         </article>
     </section>
 
-    <!-- Social / Actions Bar -->
-    <section class="royale-social" aria-label="Follow the couple, the venues, and the dates">
+    <!-- Actions Bar: locations and calendar -->
+    <section class="royale-social" aria-label="The venues and dates">
         <div class="socials">
-            <button class="social" id="ryIgBtn" type="button" aria-label="Instagram">
-                <span class="social__icon social__icon--instagram" aria-hidden="true"></span>
-            </button>
             <button class="social" id="ryLocBtn" type="button" aria-label="Ceremony locations">
                 <span class="social__icon social__icon--location" aria-hidden="true"></span>
             </button>
@@ -685,67 +703,31 @@
         </picture>
         <div class="royale-outro__easel">
             <div class="royale-outro__board">
-                <p class="royale-outro__names">Gunjan &amp; Sagar</p>
-                <p class="royale-outro__line">Your Presence Means the World to Us</p>
+                <p class="royale-outro__names">Shaziyabanu &amp; Mohammed Fahim</p>
+                <p class="royale-outro__line">Your Duas &amp; Presence Mean the World to Us</p>
             </div>
         </div>
         <img class="ry-tear ry-tear--bottom" src="media/section_divider.svg" alt="" loading="lazy" decoding="async">
     </section>
 
     
-    <!-- Crafted by Naresh Suthar -->
+    <!-- Credits: Naresh Suthar & Ajit Rajput -->
     <footer class="royale-credits" style="
         text-align: center;
-        padding: 40px 20px 50px;
-        background: linear-gradient(180deg, #3e0823 0%, #2b0518 100%);
-        color: #fdf2e1;
+        padding: 22px 16px 28px;
+        background: #230313;
+        color: rgba(253, 242, 225, 0.7);
         font-family: var(--font-sans, 'Sora', sans-serif);
+        font-size: 0.8rem;
         position: relative;
         z-index: 5;
-        border-top: 1px solid rgba(254, 182, 105, 0.25);
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
     ">
-        <div style="max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 8px;">
-            <span style="display: inline-block; width: 44px; height: 1.5px; background: #feb669; opacity: 0.7; margin-bottom: 6px;"></span>
-            <p style="
-                margin: 0;
-                font-size: 0.75rem;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                color: #feb669;
-                font-weight: 600;
-            ">
-                Crafted &amp; Designed with &#10084;&#65039; by
-            </p>
-            <h4 style="
-                margin: 2px 0 6px;
-                font-family: var(--font-names, 'Cormorant Garamond', Georgia, serif);
-                font-size: 1.85rem;
-                font-weight: 700;
-                letter-spacing: 0.05em;
-                color: #fdf2e1;
-            ">
-                Naresh Suthar
-            </h4>
-            <a href="https://www.instagram.com/also_naresh" target="_blank" rel="noopener" style="
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                color: #feb669;
-                text-decoration: none;
-                font-size: 0.92rem;
-                font-weight: 500;
-                padding: 7px 18px;
-                border-radius: 999px;
-                background: rgba(254, 182, 105, 0.12);
-                border: 1px solid rgba(254, 182, 105, 0.35);
-                transition: all 0.25s ease;
-            " onmouseover="this.style.background='rgba(254,182,105,0.25)';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='rgba(254,182,105,0.12)';this.style.transform='none';">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                @also_naresh
-            </a>
-        </div>
+        <p style="margin: 0; display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 12px; letter-spacing: 0.03em;">
+            <span>Designed &amp; Developed by <a href="https://www.instagram.com/also_naresh" target="_blank" rel="noopener" style="color: #feb669; text-decoration: none; font-weight: 600;">Naresh Suthar</a></span>
+            <span style="opacity: 0.35;">|</span>
+            <span>Photography by <strong style="color: #fff8ec; font-weight: 600;">Ajit Rajput</strong> (<a href="tel:8511396025" style="color: #feb669; text-decoration: none;">+91 85113 96025</a>)</span>
+        </p>
     </footer>
 
     <!-- Modal for Ceremonies / Locations / Calendar -->
@@ -772,6 +754,7 @@
     <script src="_platform/vendor/ScrollTrigger.min.js"></script>
     <script src="_platform/vendor/lenis.min.js"></script>
     <script src="scroll.js"></script>
+    <script src="hero-fx.js"></script>
     <script src="outro.js"></script>
 
     <!-- Platform components: Date Display and Music Control -->
